@@ -5,4 +5,5 @@ COPY . /frontend
 ARG API_URL
 ENV REACT_APP_HOST_IP_ADDRESS $API_URL
 RUN yarn
-RUN yarn build
+RUN yarn run build
+

@@ -20,12 +20,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+from django.utils.crypto import get_random_string
+chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+SECRET_KEY = get_random_string(50, chars)
+# print SECRET_KEY
+# SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+TEMPLATE_DEBUG = True
 
+
+# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -122,4 +129,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST =os.environ.get("DJANGO_CORS_ORIGIN_WHITELIST").split(" ")
+# CORS_ORIGIN_WHITELIST =os.environ.get("DJANGO_CORS_ORIGIN_WHITELIST").split(" ")
+
